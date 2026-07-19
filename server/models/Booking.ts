@@ -54,7 +54,6 @@ const BookingSchema = new Schema<IBooking>(
     bookingId: {
       type: String,
       unique: true,
-      required: true,
     },
   },
   { timestamps: true },

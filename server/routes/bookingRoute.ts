@@ -8,8 +8,8 @@ import { protect } from "../middlewares/auth.js";
 
 const bookingRouter = Router();
 
-bookingRouter.post("/", createBooking);
+bookingRouter.post("/", protect, createBooking);
 bookingRouter.get("/my", protect, getMyBookings);
-bookingRouter.delete("/:id/cancel", protect, cancelBooking);
+bookingRouter.put("/:id/cancel", protect, cancelBooking);
 
 export default bookingRouter;

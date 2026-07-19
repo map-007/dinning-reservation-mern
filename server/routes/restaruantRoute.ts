@@ -10,9 +10,9 @@ import {
 const restaurantRouter = Router();
 
 restaurantRouter.get("/", getRestaurants);
-restaurantRouter.get("/:id", getRestaurantById);
 restaurantRouter.get("/featured", getFeaturedRestaurants);
-restaurantRouter.get("/:slug", getRestaurantBySlug);
+restaurantRouter.get("/slug/:slug", getRestaurantBySlug);
+restaurantRouter.get("/:id", getRestaurantById);
 restaurantRouter.get("/:id/availability", getRestaurantAvailability);
 
 export default restaurantRouter;

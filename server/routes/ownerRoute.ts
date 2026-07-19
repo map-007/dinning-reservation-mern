@@ -13,10 +13,10 @@ const ownerRouter = Router();
 ownerRouter.use(protect);
 ownerRouter.use(ownerOnly);
 
-ownerRouter.get("/restaurant", getOwnersRestaurant);
+ownerRouter.get("/restaurant", protect, getOwnersRestaurant);
 ownerRouter.post("/restaurant", upload.single("image"), createOwnersRestaurant);
 ownerRouter.put("/restaurant", upload.single("image"), updateOwnersRestaurant);
-ownerRouter.get("/bookings", getOwnerBookings);
+ownerRouter.get("/bookings", protect, getOwnerBookings);
 ownerRouter.put("/bookings/:id/status", updateBookingStatus);
 
 export default ownerRouter;
