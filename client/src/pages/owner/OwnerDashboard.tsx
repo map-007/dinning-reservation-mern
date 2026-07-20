@@ -26,13 +26,12 @@ export default function OwnerDashboard() {
     try {
       setLoading(true);
       const res = await api.get("/owner/restaurant");
-      setRestaurant(res.data[0]);
+      const ownerRestaurant = res.data[0] ?? null;
+      setRestaurant(ownerRestaurant);
 
-      if (res.data) {
-        if (res.data.status === "approved") {
-          const bookingRes = await api.get("/owner/bookings");
-          setBookings(bookingRes.data);
-        }
+      if (ownerRestaurant?.status === "approved") {
+        const bookingRes = await api.get("/owner/bookings");
+        setBookings(bookingRes.data);
       }
     } catch (error: any) {
       toast.error(error?.response?.data?.message || error.message);
